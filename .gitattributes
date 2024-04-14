@@ -1,2 +1,105 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Test</title>
+<style>
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    color: rgb(25, 12, 206);
+    text-align: center;
+    background-image: url('Background.jpg'); /* Add background image */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-color: rgb(134, 224, 236);  
+}
+
+
+  #loveText {
+    display: none;
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    margin-top: 25px;
+  }
+
+  #noButton, #yesButton {
+    margin-top: 25px;
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(25, 12, 206);
+    font-size: 20px; /* Decrease font size */
+    padding: 8px 16px; /* Decrease padding */
+  }
+
+  #picContainer {
+    position: relative;
+    margin-top: 50px;
+  }
+
+  #Sad_Rakan {
+    max-width: 300px;
+    max-height: 300px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #Happy_Rakan {
+    max-width: 500px;
+    max-height: 500px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+</head>
+<body>
+  <h1>Do you love me?</h1>
+  
+  <button id="yesButton" onclick="showLove()">Yes</button>
+  <p id="loveText">I Love You More Than You Know</p>
+  <button id="noButton" onclick="moveButton()">No</button>
+
+  <div id="picContainer">
+    <img id="Sad_Rakan" src="Sad_Rakan.jpeg" alt="sad rakan">
+    <img id="Happy_Rakan" src="Happy_Rakan.jpeg" alt="happy rakan">
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById('loveText').style.display = 'block';
+      document.getElementById('Happy_Rakan').style.display = 'inline-block';
+      document.getElementById('Sad_Rakan').style.display = 'none';
+    }
+
+    function moveButton() {
+      var button = document.getElementById('noButton');
+      var maxX = window.innerWidth - button.offsetWidth;
+      var maxY = window.innerHeight - button.offsetHeight;
+      var newX = Math.floor(Math.random() * maxX);
+      var newY = Math.floor(Math.random() * maxY);
+      button.style.position = 'absolute';
+      button.style.left = newX + 'px';
+      button.style.top = newY + 'px';
+      document.getElementById('Sad_Rakan').style.display = 'inline-block'; // Show the "Sad_Rakan" picture when "No" is clicked
+      document.getElementById('Sad_Rakan').style.left = newX + 'px'; // Move the "Sad_Rakan" picture horizontally
+      document.getElementById('Sad_Rakan').style.top = newY + 'px'; // Move the "Sad_Rakan" picture vertically
+      document.getElementById('Happy_Rakan').style.display = 'none'; // Hide the "Happy_Rakan" picture when "No" is clicked
+      document.getElementById('loveText').style.display = 'none'; // Hide the love text when "No" is clicked
+    }
+
+    function hideLove() {
+      document.getElementById('loveText').style.display = 'none';
+      document.getElementById('Sad_Rakan').style.display = 'none';
+      document.getElementById('Happy_Rakan').style.display = 'none';
+    }
+  </script>
+</body>
+</html> 
+
